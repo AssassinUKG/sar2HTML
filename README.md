@@ -5,7 +5,7 @@ Reverse Shell for sar2HTML (Basic web and reverse)
 
 You can use the old exploit if not try a new folder (admin may have moved the install directory)
 
-![Old Exploit](https://www.exploit-db.com/exploits/47204)
+[Old Exploit](https://www.exploit-db.com/exploits/47204)
 
 
 # Usage: ./sar2HTML -ip HOST IP -rip IP:PORT -pe folder
